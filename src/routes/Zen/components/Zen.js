@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import classes from './Zen.scss'
+import classes from './Zen.less'
 import Loader from 'halogen/ClipLoader'
 
 const child = (item) => (

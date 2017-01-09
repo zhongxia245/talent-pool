@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NotFoundImage from '../assets/404.jpg'
-import classes from './PageNotFound.scss'
+import classes from './PageNotFound.less'
 import { withRouter } from 'react-router'
 
 class PageNotFound extends Component {

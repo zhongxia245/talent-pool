@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header } from 'components/Header/Header'
-import classes from 'components/Header/Header.scss'
+import classes from 'components/Header/Header.less'
 import { IndexLink, Link } from 'react-router'
 import { shallow } from 'enzyme'
 
