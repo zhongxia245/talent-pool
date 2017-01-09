@@ -1,3 +1,4 @@
+@duration: 0.3s;
 .core-layout__container {
     height: 100%;
     display: flex;
@@ -11,10 +12,11 @@
 
 .core-layout__sidebar {
     width: 0;
-    transition: all 0.5s;
+    overflow: hidden;
+    transition: all @duration;
 }
 
 .core-layout__sidebar--active {
-    transition: all 0.5s;
+    transition: all @duration;
     width: 1rem;
 }
