@@ -1,0 +1,20 @@
+.core-layout__container {
+    height: 100%;
+    display: flex;
+}
+
+.core-layout__viewport {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.core-layout__sidebar {
+    width: 0;
+    transition: all 0.5s;
+}
+
+.core-layout__sidebar--active {
+    transition: all 0.5s;
+    width: 1rem;
+}
