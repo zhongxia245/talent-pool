@@ -51,13 +51,13 @@ export const actions = {
 // ------------------------------------
 const ACTION_HANDLERS = {
   [REQUEST_ZEN]: (state) => {
-    return ({...state, fetching: true})
+    return ({ ...state, fetching: true })
   },
   [RECEIVE_ZEN]: (state, action) => {
-    return ({...state, fetching: false, text: state.text.concat(action.payload)})
+    return ({ ...state, fetching: false, text: state.text.concat(action.payload) })
   },
   [CLEAR_ZEN]: (state) => {
-    return ({...state, text: []})
+    return ({ ...state, text: [] })
   }
 }
 

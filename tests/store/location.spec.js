@@ -66,7 +66,6 @@ describe('(Internal Module) Location', () => {
           location : locationReducer(_globalState.location, action)
         }
       })
-
     })
 
     it('Should be exported as a function.', () => {
@@ -82,5 +81,4 @@ describe('(Internal Module) Location', () => {
       expect(_dispatchSpy.should.have.been.calledOnce)
     })
   })
-
 })

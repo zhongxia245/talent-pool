@@ -11,7 +11,7 @@ import SideBar from '../Sidebar'
  * 布局组件
  */
 class CoreLayout extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     autoBind(this)
     this.state = {
@@ -19,18 +19,18 @@ class CoreLayout extends Component {
     }
   }
 
-  handleOpen(flag) {
+  handleOpen (flag) {
     this.setState({
       open: flag
     })
   }
 
-  render() {
-    const {children} = this.props
+  render () {
+    const { children } = this.props
     return (
       <div className='core-layout__container'>
         <div className={classNames('core-layout__sidebar', { 'core-layout__sidebar--active': this.state.open })}>
-          <SideBar/>
+          <SideBar />
         </div>
         <div className='core-layout__viewport'>
           <Header handleOpen={this.handleOpen} />

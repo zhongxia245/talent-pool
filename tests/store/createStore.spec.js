@@ -26,5 +26,4 @@ describe('(Store) createStore', () => {
       expect(store.getState().location).to.deep.equal(location)
     })
   })
-
 })
