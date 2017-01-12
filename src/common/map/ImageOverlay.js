@@ -1,15 +1,15 @@
 /**
  * 覆盖物类
  */
-function ComplexCustomOverlay(point, text, mouseoverText) {
+function ImageOverlay(point, text, mouseoverText) {
   this._point = point
   this._text = text
   this._overText = mouseoverText
 }
 
-ComplexCustomOverlay.prototype = new BMap.Overlay()
+ImageOverlay.prototype = new BMap.Overlay()
 
-ComplexCustomOverlay.prototype.initialize = function (map) {
+ImageOverlay.prototype.initialize = function (map) {
   this._map = map
   var div = this._div = document.createElement('div')
 
@@ -58,11 +58,11 @@ ComplexCustomOverlay.prototype.initialize = function (map) {
   return div
 }
 
-ComplexCustomOverlay.prototype.draw = function () {
+ImageOverlay.prototype.draw = function () {
   var map = this._map
   var pixel = map.pointToOverlayPixel(this._point)
   this._div.style.left = pixel.x - parseInt(this._arrow.style.left) + 'px'
   this._div.style.top = pixel.y - 30 + 'px'
 }
 
-export default ComplexCustomOverlay
+export default ImageOverlay
