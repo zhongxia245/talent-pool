@@ -1,0 +1,38 @@
+.core-sidebar {
+    background: cadetblue;
+    overflow: hidden;
+    min-width: 0.8rem;
+}
+
+.core-sidebar__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #FFF;
+    padding: 0.1rem;
+    &:active {
+        opacity: 0.8;
+    }
+    .gemini-icon {
+        font-size: 0.3rem;
+        margin-bottom: 0.05rem;
+    }
+}
+
+.core-sidebar__link,
+.core-sidebar__link:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.core-sidebar__item--active {
+    background: #999;
+}
+
+.core-sidebar__title {
+    font-size: 0.18rem;
+    color: #FFF;
+    text-align: center;
+    line-height: 2.2;
+    border-bottom: 1px solid lightskyblue;
+}

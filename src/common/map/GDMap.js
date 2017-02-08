@@ -2,9 +2,10 @@
  * 高德底图类库
  */
 export default class GDMap {
-  constructor(id, resizeEnable = true, zoom = 15) {
+  constructor(id, resizeEnable = true, zoom = 13) {
     this.map = new AMap.Map(id, {
       resizeEnable: resizeEnable,
+      center: [116.397428, 39.90923],
       zoom: zoom
     })
 
@@ -62,7 +63,7 @@ export default class GDMap {
 
     var marker = new AMap.Marker({ //添加自定义点标记
       map: map,
-      position: [116.397428, 39.90923], //基点位置
+      position: [116.400100, 39.90923], //基点位置
       offset: new AMap.Pixel(0, 0), //相对于基点的偏移位置
       draggable: draggable,  //是否可拖动
       content: '<div class="overlay">point</div>'   //自定义点标记覆盖物内容
@@ -78,6 +79,64 @@ export default class GDMap {
         dom.classList.add('overlay--active')
         callback && callback(true)
       }
+    });
+
+    this.addaddCluster1()
+  }
+
+  /**
+   * 点汇聚功能，需要优化下。
+   */
+  addaddCluster1() {
+    const map = this.map
+    var cluster, markers = [];
+
+    // 随机向地图添加500个标注点
+    var mapBounds = map.getBounds();
+    var sw = mapBounds.getSouthWest();
+    var ne = mapBounds.getNorthEast();
+    var lngSpan = Math.abs(sw.lng - ne.lng);
+    var latSpan = Math.abs(ne.lat - sw.lat);
+    for (var i = 0; i < 500; i++) {
+      var markerPosition = [sw.lng + lngSpan * (Math.random() * 1), ne.lat - latSpan * (Math.random() * 1)];
+      var marker = new AMap.Marker({
+        position: markerPosition,
+        icon: "http://amappc.cn-hangzhou.oss-pub.aliyun-inc.com/lbs/static/img/marker.png",
+        offset: { x: -8, y: -34 }
+      });
+      markers.push(marker);
+    }
+    this.addCluster(cluster, markers);
+  }
+
+  // 添加点聚合
+  addCluster(cluster, markers) {
+    const map = this.map
+    if (cluster) {
+      cluster.setMap(null);
+    }
+
+    /**
+     * 参照：http://lbs.amap.com/api/javascript-api/reference/plugin/#AMap.MarkerClusterer
+     */
+    var sts = [{
+      url: "http://a.amap.com/lbs/static/img/1102-1.png",
+      size: new AMap.Size(32, 32),
+      offset: new AMap.Pixel(-16, -30)
+    }, {
+      url: "http://a.amap.com/lbs/static/img/2.png",
+      size: new AMap.Size(32, 32),
+      offset: new AMap.Pixel(-16, -30)
+    }, {
+      url: "http://lbs.amap.com/wp-content/uploads/2014/06/3.png",
+      size: new AMap.Size(48, 48),
+      offset: new AMap.Pixel(-24, -45),
+      textColor: '#FFF'
+    }];
+    map.plugin(["AMap.MarkerClusterer"], function () {
+      cluster = new AMap.MarkerClusterer(map, markers, {
+        styles: sts
+      });
     });
   }
 }
